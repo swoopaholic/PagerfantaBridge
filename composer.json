@@ -1,0 +1,21 @@
+{
+    "name": "swoopaholic/pagerfanta-bridge",
+    "type": "swoopaholic-bridge",
+    "description": "Swoopaholic Pagerfanta Bridge",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Danny Dörfel",
+            "email": "danny.dorfel@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "pagerfanta/pagerfanta": "1.0.*"
+    },
+    "autoload": {
+        "psr-0": { "Swoopaholic\\Bridge\\Pagerfanta\\": "" }
+    },
+    "target-dir": "Swoopaholic/Bridge/Pagerfanta",
+    "minimum-stability": "dev"
+}
