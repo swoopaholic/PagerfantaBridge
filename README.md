@@ -4,24 +4,35 @@ Pagerfanta Bridge
 This small library is intended to remove the dependency on the Pagerfanta bundle and it's twig extensions.
 By using the view, you can create a template to render the pager.
 
-Installation
-------------
+Usage
+-----
 
-All the installation instructions are located in the documentation.
+Just download the library and use it in your symfony2 project controller:
 
-License
--------
+``` php
+/**
+ * Lists all entities.
+ *
+ * @Route("/", name="my_entities")
+ * @Method("GET")
+ * @Template()
+ */
+public function indexAction(Request $request)
+{
+    $qb = $this->getDoctrine()->getManager()->createQueryBuilder('MyBundle:MyEntity');
+    $adapter = new \Pagerfanta\Adapter\DoctrineORMAdapter($qb);
+    
+    $pager = new \Swoopaholic\Bridge\Pagerfanta\Pagerfanta($adapter);
+    $pager->setCurrentPage($request->get('page', 1));
+    $pager->setMaxPerPage(50);
 
-This bundle is under the MIT license. See the complete license in the bundle:
+    return array(
+        'entities' => $pager->getData(),
+        'pagerfanta' => $pager->createView(),
+    );
 
-    LICENSE
-
-
-Twig example
--------
-
+```
 Create a macro template for rendering the pager:
-
 ```twig
 {% block page_first %}
     <li{% if pager.currentPage <= 1 %} class="disabled"{% endif %}><a href="{{ pager.first }}">&laquo;</a></li>
@@ -59,9 +70,7 @@ Create a macro template for rendering the pager:
     {% endif %}
 {% endmacro %}
 ```
-
 Using the macro 'pager' in a template with the view ('pagerfanta') is easy:
-
 ``` twig
 {% import 'MyLayoutTemplatesBundle:Navigation:pager.html.twig' as pager %}
 
@@ -69,3 +78,10 @@ Using the macro 'pager' in a template with the view ('pagerfanta') is easy:
 
 {{ pager.pager(pagerfanta) }}
 ```
+
+License
+-------
+
+This bundle is under the MIT license. See the complete license in the bundle:
+
+    LICENSE
