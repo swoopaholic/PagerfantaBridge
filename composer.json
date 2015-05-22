@@ -17,5 +17,5 @@
         "psr-0": { "Swoopaholic\\Bridge\\Pagerfanta\\": "" }
     },
     "target-dir": "Swoopaholic/Bridge/Pagerfanta",
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
