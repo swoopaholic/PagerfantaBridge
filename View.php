@@ -34,7 +34,7 @@ class View
     /**
      * @var string
      */
-    public $previous;
+    public $prev;
 
     /**
      * @var string
