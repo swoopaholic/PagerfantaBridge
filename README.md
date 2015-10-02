@@ -82,6 +82,6 @@ Using the macro 'pager' in a template with the view ('pagerfanta') is easy:
 License
 -------
 
-This bundle is under the MIT license. See the complete license in the bundle:
+This bundle is released under the MIT license. See the complete license in the bundle:
 
     LICENSE
